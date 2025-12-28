@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>柳思含离宇洁美容机构 | Bio-Aesthetics</title>
+    <style>
+        :root {
+            --ios-blue: #007AFF;
+            --ios-bg: #000000;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.12);
+            --text-main: #FFFFFF;
+            --text-dim: #8E8E93;
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--ios-bg);
+            color: var(--text-main);
+            font-family: -apple-system, "SF Pro Display", "PingFang SC", "Helvetica Neue", sans-serif;
+            font-size: 11px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 动态背景：抽象数学网格 */
+        .math-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #0d0d0f 0%, #000 100%);
+        }
+        .grid-line {
+            position: absolute;
+            background: var(--ios-blue);
+            opacity: 0.05;
+        }
+
+        /* 第一屏：全称封面 */
+        .hero-screen {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 30px;
+        }
+
+        .hero-title {
+            font-size: 26px;
+            font-weight: 200;
+            letter-spacing: 6px;
+            line-height: 1.4;
+            background: linear-gradient(180deg, #fff 0%, #888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .hero-title span {
+            display: block;
+            font-size: 14px;
+            letter-spacing: 12px;
+            margin-top: 10px;
+            font-weight: 300;
+            color: var(--ios-blue);
+            -webkit-text-fill-color: var(--ios-blue); /* 覆盖渐变色 */
+            opacity: 0.8;
+        }
+
+        .hero-subtitle {
+            font-size: 9px;
+            color: #444;
+            letter-spacing: 3px;
+            margin-top: 30px;
+            text-transform: uppercase;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 50px;
+            font-size: 10px;
+            color: #222;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+        /* 内容区 */
+        header {
+            position: sticky;
+            top: 0;
+            padding: 18px 0;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            z-index: 100;
+            border-bottom: 0.5px solid var(--border);
+            text-align: center;
+        }
+        header .small-logo {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .content-container {
+            padding: 40px 20px 80px 20px;
+        }
+
+        section {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-tag {
+            font-size: 8px;
+            color: var(--ios-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: block;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 17px;
+            font-weight: 300;
+            margin-bottom: 18px;
+            letter-spacing: -0.2px;
+        }
+
+        .description {
+            color: var(--text-dim);
+            font-size: 11px;
+            margin-bottom: 25px;
+            text-align: justify;
+            font-weight: 300;
+        }
+
+        /* 细节网格 */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .detail-box {
+            background: var(--glass);
+            border-radius: 14px;
+            padding: 15px;
+            border: 0.5px solid var(--border);
+            transition: 0.3s;
+        }
+        .detail-box:active {
+            background: rgba(0, 122, 255, 0.1);
+            border-color: var(--ios-blue);
+        }
+
+        .detail-box h3 {
+            font-size: 10px;
+            color: var(--ios-blue);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .detail-box p {
+            font-size: 9px;
+            color: #999;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            border-top: 0.5px solid var(--border);
+            color: #2c2c2e;
+            font-size: 8px;
+            letter-spacing: 1px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="math-bg">
+        <!-- 装饰线条 -->
+        <div class="grid-line" style="width: 1px; height: 100%; left: 20%;"></div>
+        <div class="grid-line" style="width: 1px; height: 100%; left: 80%;"></div>
+        <div class="grid-line" style="width: 100%; height: 1px; top: 30%;"></div>
+    </div>
+
+    <!-- 1. 初始开屏：全称 -->
+    <div class="hero-screen">
+        <h1 class="hero-title">
+            柳思含离宇洁
+            <span>美容机构</span>
+        </h1>
+        <p class="hero-subtitle">Mathematical Aesthetic Institute</p>
+        <div class="scroll-hint">DISCOVER THE FORMULA ↓</div>
+    </div>
+
+    <!-- 2. 滑动后显示 -->
+    <header>
+        <div class="small-logo">柳思含离宇洁美容机构</div>
+    </header>
+
+    <div class="content-container">
+        
+        <!-- Part 1: 数学基底 -->
+        <section>
+            <span class="section-tag">Phase 01 / Mathematical Base</span>
+            <h2>非线性美学建模方程</h2>
+            <p class="description">
+                在柳思含离宇洁，美丽被简化为一组极其精确的偏微分方程。我们通过自研的<b>「LSH-Euler」系统</b>，对您的面部软组织张力进行全局建模，利用拉格朗日乘子法求解每一个毛孔的最佳生长矢量。
+            </p>
+            <div class="detail-grid">
+                <div class="detail-box">
+                    <h3>张量场解析</h3>
+                    <p>将面部24万个采样点数字化，模拟未来20年的重力熵增过程。</p>
+                </div>
+                <div class="detail-box">
+                    <h3>拓扑平衡</h3>
+                    <p>确保修复后的轮廓符合流体动力学的自然弧度，杜绝人工感。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 2: 实验室 -->
+        <section>
+            <span class="section-tag">Phase 02 / The Void</span>
+            <h2>苏黎世 Sector-7 零磁空间</h2>
+            <p class="description">
+                我们的核心诊疗室位于瑞士阿尔卑斯岩层下方。空间墙体嵌入了专利坡莫合金，彻底隔绝了破坏细胞自愈信号的全球电磁背景噪音。
+            </p>
+            <div class="detail-grid">
+                <div class="detail-box">
+                    <h3>432Hz 疗愈</h3>
+                    <p>环境音频与DNA修复频率同步，进入深度神经修复模式。</p>
+                </div>
+                <div class="detail-box">
+                    <h3>高压分子氧</h3>
+                    <p>维持 1.25 倍大气压，确保活性肽链以亚音速级渗透真皮层。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 3: 分子技术 -->
+        <section>
+            <span class="section-tag">Phase 03 / Molecular Tech</span>
+            <h2>「离宇」级肽链置换</h2>
+            <p class="description">
+                我们独立合成的<b>“离宇活性肽”</b>拥有独特的量子隧道效应，能绕过表皮屏障，直接与细胞核内的端粒酶发生反应，从根源重置细胞的生长周期。
+            </p>
+            <div class="detail-grid" style="grid-template-columns: 1fr;">
+                <div class="detail-box">
+                    <h3>DNA 信号修正</h3>
+                    <p>不仅仅是滋润，而是通过分子指令，重启受损组织的自愈能力，还原 18 岁时的胶原蛋白密度。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 4: 硬件 -->
+        <section>
+            <span class="section-tag">Phase 04 / Computing</span>
+            <h2>LSH-9000 边缘计算终端</h2>
+            <p class="description">
+                每一台美容仪都接入了分布式的超算矩阵。它以每秒 50TB 的速度处理全息影像，确保每一束激光脉冲都在纳米级误差范围内精确作用于目标色素。
+            </p>
+            <div class="detail-grid">
+                <div class="detail-box">
+                    <h3>全息断层镜</h3>
+                    <p>穿透真皮层，实时渲染皮下微细血管的流向与代谢速度。</p>
+                </div>
+                <div class="detail-box">
+                    <h3>毫秒反馈系统</h3>
+                    <p>痛感感应器在 0.1 毫秒内介入，实现真正意义上的无感医疗美学。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 5: 会员 -->
+        <section>
+            <span class="section-tag">Phase 05 / Privilege</span>
+            <h2>全球美学主权管理</h2>
+            <p class="description">
+                我们为精英阶层提供“终身驻颜计划”。您的面部数据将被加密存储于斯瓦尔巴群岛的数字保险库，作为您唯一的、可被物理还原的美学代码。
+            </p>
+            <div class="detail-grid">
+                <div class="detail-box" style="grid-column: span 2;">
+                    <h3>黑卡权益</h3>
+                    <p>• 私人专机全球实验室直通服务<br>• 苏黎世总部驻颜博士 1对1 实时顾问<br>• 跨代生物数据永久云端备份</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            柳思含离宇洁美容机构 (GLOBAL) · 极致科学之美<br>
+            2025 ALL RIGHTS RESERVED | DESIGNED BY JAMIE
+        </footer>
+    </div>
+
+</body>
+</html>
