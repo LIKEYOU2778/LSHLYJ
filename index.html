@@ -71,7 +71,7 @@
             margin-top: 10px;
             font-weight: 300;
             color: var(--ios-blue);
-            -webkit-text-fill-color: var(--ios-blue); /* 覆盖渐变色 */
+            -webkit-text-fill-color: var(--ios-blue); 
             opacity: 0.8;
         }
 
@@ -118,7 +118,7 @@
         }
 
         section {
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             position: relative;
         }
 
@@ -145,6 +145,70 @@
             margin-bottom: 25px;
             text-align: justify;
             font-weight: 300;
+        }
+
+        /* 对比模块专用样式 */
+        .comparison-container {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .comparison-item {
+            flex: 1;
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 0.5px solid var(--border);
+            background: var(--glass);
+        }
+
+        .comparison-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(0.2) brightness(0.9);
+            transition: 0.5s ease;
+        }
+
+        .comparison-item:hover img {
+            filter: grayscale(0) brightness(1.1);
+        }
+
+        .img-label {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 7px;
+            letter-spacing: 1px;
+            color: var(--ios-blue);
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+            text-transform: uppercase;
+        }
+
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--ios-blue), transparent);
+            box-shadow: 0 0 15px var(--ios-blue);
+            z-index: 2;
+            animation: scanMove 3s linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes scanMove {
+            0% { top: 0%; }
+            100% { top: 100%; }
         }
 
         /* 细节网格 */
@@ -193,13 +257,12 @@
 <body>
 
     <div class="math-bg">
-        <!-- 装饰线条 -->
         <div class="grid-line" style="width: 1px; height: 100%; left: 20%;"></div>
         <div class="grid-line" style="width: 1px; height: 100%; left: 80%;"></div>
         <div class="grid-line" style="width: 100%; height: 1px; top: 30%;"></div>
     </div>
 
-    <!-- 1. 初始开屏：全称 -->
+    <!-- 1. 初始开屏 -->
     <div class="hero-screen">
         <h1 class="hero-title">
             柳思含离宇洁
@@ -221,7 +284,7 @@
             <span class="section-tag">Phase 01 / Mathematical Base</span>
             <h2>非线性美学建模方程</h2>
             <p class="description">
-                在柳思含离宇洁，美丽被简化为一组极其精确的偏微分方程。我们通过自研的<b>「LSH-Euler」系统</b>，对您的面部软组织张力进行全局建模，利用拉格朗日乘子法求解每一个毛孔的最佳生长矢量。
+                在柳思含离宇洁，美丽被简化为一组极其精确的偏微分方程。我们通过自研的<b>「LSH-Euler」系统</b>，对您的面部软组织张力进行全局建模。
             </p>
             <div class="detail-grid">
                 <div class="detail-box">
@@ -240,7 +303,7 @@
             <span class="section-tag">Phase 02 / The Void</span>
             <h2>苏黎世 Sector-7 零磁空间</h2>
             <p class="description">
-                我们的核心诊疗室位于瑞士阿尔卑斯岩层下方。空间墙体嵌入了专利坡莫合金，彻底隔绝了破坏细胞自愈信号的全球电磁背景噪音。
+                我们的核心诊疗室位于瑞士阿尔卑斯岩层下方。空间墙体嵌入了专利坡莫合金，彻底隔绝电磁背景噪音。
             </p>
             <div class="detail-grid">
                 <div class="detail-box">
@@ -254,12 +317,34 @@
             </div>
         </section>
 
+        <!-- 新增模块：对比界面 -->
+        <section>
+            <span class="section-tag">Phase 02.5 / Visual Evidence</span>
+            <h2>多维折射对比</h2>
+            <p class="description">
+                基于「LSH-Euler」模型的实时演化对比。左侧为原始熵值分布，右侧为经过端粒酶信号修正后的高维稳态表现。
+            </p>
+            <div class="comparison-container">
+                <!-- 术前 -->
+                <div class="comparison-item">
+                    <div class="img-label">Initial State / 初始态</div>
+                    <img src="QIAN.jpg" alt="Before Treatment">
+                </div>
+                <!-- 术后 -->
+                <div class="comparison-item">
+                    <div class="scan-line"></div>
+                    <div class="img-label" style="color: #fff; background: rgba(0, 122, 255, 0.3);">Bio-Modeling / 重构态</div>
+                    <img src="HOU.jpg" alt="After Treatment">
+                </div>
+            </div>
+        </section>
+
         <!-- Part 3: 分子技术 -->
         <section>
             <span class="section-tag">Phase 03 / Molecular Tech</span>
             <h2>「离宇」级肽链置换</h2>
             <p class="description">
-                我们独立合成的<b>“离宇活性肽”</b>拥有独特的量子隧道效应，能绕过表皮屏障，直接与细胞核内的端粒酶发生反应，从根源重置细胞的生长周期。
+                我们独立合成的<b>“离宇活性肽”</b>拥有独特的量子隧道效应，能绕过表皮屏障，直接与细胞核内的端粒酶发生反应，从根源重置生长周期。
             </p>
             <div class="detail-grid" style="grid-template-columns: 1fr;">
                 <div class="detail-box">
@@ -274,7 +359,7 @@
             <span class="section-tag">Phase 04 / Computing</span>
             <h2>LSH-9000 边缘计算终端</h2>
             <p class="description">
-                每一台美容仪都接入了分布式的超算矩阵。它以每秒 50TB 的速度处理全息影像，确保每一束激光脉冲都在纳米级误差范围内精确作用于目标色素。
+                每一台美容仪都接入了分布式的超算矩阵。它以每秒 50TB 的速度处理全息影像，确保每一束激光脉冲都在纳米级误差范围内。
             </p>
             <div class="detail-grid">
                 <div class="detail-box">
@@ -293,7 +378,7 @@
             <span class="section-tag">Phase 05 / Privilege</span>
             <h2>全球美学主权管理</h2>
             <p class="description">
-                我们为精英阶层提供“终身驻颜计划”。您的面部数据将被加密存储于斯瓦尔巴群岛的数字保险库，作为您唯一的、可被物理还原的美学代码。
+                我们为精英阶层提供“终身驻颜计划”。您的面部数据将被加密存储于斯瓦尔巴群岛的数字保险库，作为唯一的、可被物理还原的美学代码。
             </p>
             <div class="detail-grid">
                 <div class="detail-box" style="grid-column: span 2;">
